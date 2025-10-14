@@ -1,282 +1,116 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, rgba(0,128,0,0.3), rgba(255,255,0,0.3));
+}
+
+header {
+  background-color: rgba(0,128,0,0.6);
+  color: white;
+  padding: 10px;
+  position: relative;
+}
+
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.marquee h1 {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}
+
+.search-box {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+nav {
+  background-color: rgba(255,255,0,0.4);
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: darkgreen;
+  font-weight: bold;
+}
+
+footer {
+  background-color: rgba(0,128,0,0.6);
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SMKS Islam Malahayati</title>
-  <style>
-    /* Reset dan Font */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(to bottom right, #cfd8dc, #80deea, #ffffff);
-      color: #333;
-      overflow-x: hidden;
-    }
-
-    /* Header */
-    header {
-      text-align: center;
-      padding: 80px 20px 40px;
-      background: linear-gradient(to right, #cfd8dc, #80deea, #ffffff);
-      color: #333;
-      position: relative;
-    }
-
-    header h1 {
-      font-size: 42px;
-      color: #00796b;
-      animation: fadeInDown 1s ease-in-out;
-    }
-
-    header p {
-      font-size: 20px;
-      color: #555;
-      animation: fadeInUp 1s ease-in-out;
-    }
-
-    /* Animasi */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Menu Strip Tiga */
-    .menu-toggle {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-      cursor: pointer;
-    }
-
-    .menu-toggle div {
-      width: 30px;
-      height: 4px;
-      background-color: #00796b;
-      margin: 6px 0;
-      transition: 0.4s;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: #004d40;
-      padding: 60px 20px;
-      transition: 0.5s;
-      z-index: 999;
-    }
-
-    .sidebar.active {
-      left: 0;
-    }
-
-    .sidebar a {
-      display: block;
-      color: #fff;
-      padding: 15px 0;
-      text-decoration: none;
-      border-bottom: 1px solid #80deea;
-    }
-
-    .sidebar a:hover {
-      color: #80deea;
-    }
-
-    /* Konten Utama */
-    main {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    section {
-      margin-bottom: 60px;
-    }
-
-    h2 {
-      color: #00796b;
-      margin-bottom: 20px;
-      font-size: 28px;
-    }
-
-    p, li {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    ul {
-      margin-left: 20px;
-    }
-
-    /* Ornamen */
-    .ornamen {
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle, #80deea 0%, transparent 70%);
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      animation: pulse 3s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.8; }
-      50% { transform: scale(1.2); opacity: 0.4; }
-      100% { transform: scale(1); opacity: 0.8; }
-    }
-
-    /* Testimoni */
-    .testimoni {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background-color: rgba(255, 255, 255, 0.7);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .card h3 {
-      color: #00796b;
-      margin-bottom: 10px;
-    }
-
-    /* Formulir Kontak */
-    form {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 30px;
-      border-radius: 10px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button {
-      background-color: #00796b;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #004d40;
-    }
-
-    /* Responsif */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 28px;
-      }
-
-      h2 {
-        font-size: 22px;
-      }
-
-      .sidebar {
-        width: 200px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>SMK Malahayati Islamic School</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Ornamen -->
-  <div class="ornamen"></div>
-
-  <!-- Menu Toggle -->
-  <div class="menu-toggle" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-
-  <!-- Sidebar Menu -->
-  <div class="sidebar" id="sidebar">
-    <a href="#profil">Profil Sekolah</a>
-    <a href="#visi">Visi dan Misi</a>
-    <a href="#program">Program TJKT</a>
-    <a href="#kontak">Kontak Sekolah</a>
-  </div>
-
-  <!-- Header -->
   <header>
-    <h1>SMKS ISLAM MALAHAYATI</h1>
-    <p>Yayasan Bina Bersama Indomas</p>
+    <div class="search-box">
+      <input type="text" placeholder="Cari...">
+    </div>
+    <div class="marquee">
+      <h1>SMK MALAHAYATI ISLAMIC SCHOOL</h1>
+    </div>
   </header>
 
-  <!-- Main Content -->
+  <nav>
+    <a href="index.html">Beranda</a>
+    <a href="profil.html">Profil</a>
+    <a href="program.html">Program</a>
+    <a href="galeri.html">Galeri</a>
+    <a href="kontak.html">Kontak</a>
+  </nav>
+
   <main>
-    <section id="profil">
-      <h2>Profil Sekolah</h2>
-      <p>SMKS Islam Malahayati adalah sekolah menengah kejuruan yang berfokus pada pembentukan karakter islami, kompetensi kerja, dan pengembangan potensi siswa. Terletak di lingkungan yang strategis dan kondusif, sekolah ini menggabungkan kurikulum nasional dengan nilai-nilai keislaman untuk mencetak generasi unggul.</p>
-    </section>
+    <h2>Selamat Datang di SMK Malahayati Islamic School</h2>
+    <p>Sekolah yang mengintegrasikan pendidikan kejuruan dengan nilai-nilai Islam.</p>
+  </main>
 
-    <section id="visi">
-      <h2>Visi dan Misi</h2>
-      <p><strong>Visi:</strong> Menjadi sekolah kejuruan islami yang unggul dalam prestasi, teknologi, dan akhlak mulia.</p>
-      <p><strong>Misi:</strong></p>
-      <ul>
-        <li>Mengembangkan potensi siswa secara optimal.</li>
-        <li>Menanamkan nilai-nilai keislaman dalam kehidupan sehari-hari.</li>
-        <li>Menyiapkan lulusan yang kompeten dan siap kerja.</li>
-        <li>Mendorong inovasi dan kreativitas dalam pembelajaran.</li>
-      </ul>
-    </section>
+  <footer>
+    <p>&copy; 2025 SMK Malahayati Islamic School</p>
+  </footer>
+</body>
+</html>
+<main>
+  <h2>Profil Sekolah</h2>
+  <p>SMK Malahayati Islamic School berdiri sejak tahun 2010 dan berkomitmen membentuk generasi islami yang profesional.</p>
+</main>
+<main>
+  <h2>Program Keahlian</h2>
+  <ul>
+    <li>Teknik Komputer dan Jaringan</li>
+    <li>Akuntansi dan Keuangan</li>
+    <li>Multimedia</li>
+  </ul>
+</main>
+<main>
+  <h2>Galeri Kegiatan</h2>
+  <p>Dokumentasi kegiatan siswa seperti lomba, praktik kerja industri, dan kegiatan keagamaan.</p>
+</main>
+<main>
+  <h2>Kontak Kami</h2>
+  <p>Alamat: Jl. Pendidikan No. 45, Jakarta</p>
+  <p>Email: info@smkmalahayati.sch.id</p>
+  <p>Telepon: (021) 12345678</p>
+</main>
 
-    <section id="program">
-      <h2>Program Keahlian TJKT</h2>
-      <p>Program Teknik Jaringan Komputer dan Telekomunikasi (TJKT) membekali siswa dengan keterampilan teknis di bidang jaringan, sistem komputer, dan komunikasi digital. Siswa akan belajar instalasi jaringan, konfigurasi perangkat, keamanan siber, dan troubleshooting sistem.</p>
-    </section>
-
-    <section>
-      <h2>Testimoni Alumni</h2>
-      <div class="testimoni">
-        <div class="card">
-          <h3>Rizky - Alumni TJKT</h3>
-          <p>SMKS Islam Malahayati membentuk saya menjadi pribadi yang siap kerja dan berakhlak. Terima kasih guru-guru hebat!</p>
-        </div>
-        <div class="card">
-          <h3>Siti - Alumni AKL</h3>
-          <p>Lingkungan belajar yang nyaman dan islami membuat saya betah dan semangat belajar setiap hari.</p>
-        </div>
-        <div class="card">
-          <h3>Andi - Alumni AP</h3>
-          <p>Program AP sangat membantu saya dalam dunia kerja. Saya diterima di perusahaan besar setelah lulus!</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="kontak">
-      <h2
+              
       
   
